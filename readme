@@ -1,0 +1,21 @@
+Befunge interpreter on python 3
+Works according to the rules from Wikipedia
+
+Usage:
+    - python3 befunge.py [f/s] [file name/program string]
+      [f/s] - without '-', where:
+        f - File mode, need enter a path to file next
+        s - String mode, need enter a program string wrapped by quotes ( " )
+      file_name - looks like "programs/hello_world.bf"
+      program string - looks like "3.@"
+
+Particular properties:
+    - Print string when next character is '\n' (ascii - 10), otherwise add char in buf
+    - Have a 'step' mode (change the 11 line in main from 'Mode.work_normal' to 'Mode.work_step'), useful for debug mode
+        (change 8 line for 'Mode.DEBUG_OFF' - off Debug mode, 'Mode.DEBUG_STACK' - for print only stack events, 'Mode.DEBUG_FULL' - for print all messages)
+
+New:
+    - Add 'jump' function
+    symbol on Befunge lang - 'j'
+    How it's work: From stack Pop row, column and move cursor(pointer) to this position with current direction(vector)
+        The Character under cursor right after jump will NOT be used, so, need jump with offset on previous character before the right
